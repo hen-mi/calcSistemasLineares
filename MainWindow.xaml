@@ -1,0 +1,160 @@
+﻿<Window x:Class="CalcSistemasLineares.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:CalcSistemasLineares"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="600" Width="900"
+        MinHeight="700"
+        MinWidth="900"
+        Background="#282828"
+        WindowStyle="None"
+        AllowsTransparency="True"
+        ResizeMode="CanResizeWithGrip"
+        WindowStartupLocation="CenterScreen"
+        
+        >
+    <Window.Resources>
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Temas/TemaCaixaDeTexto.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+    </Window.Resources>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"/>
+            <RowDefinition MinHeight="250" Height="Auto"/>
+            <RowDefinition MinHeight="25" Height="Auto" />
+            <RowDefinition Height="*"/>
+            <RowDefinition MinHeight="80" Height="Auto"/>
+
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+
+
+        </Grid.ColumnDefinitions>
+        <Border Grid.ColumnSpan="2"
+                Background="#161313"
+                MouseDown="Border_MouseDown">
+            <Grid HorizontalAlignment="Stretch">
+
+                <Label Content="Calculadora de Sistemas Lineares"
+                       Foreground="GhostWhite"
+                       FontWeight="SemiBold"
+                       FontSize="13"
+                       Margin="10,5,0,0"/>
+                <StackPanel HorizontalAlignment="Right" Orientation="Horizontal" Margin="0,3,10,0">
+                    <Button Width="20" Height="20" 
+                            Content="🗕" 
+                            Background="Transparent"
+                            BorderThickness="0"
+                            Foreground="GhostWhite"
+                            FontWeight="Bold"
+                            Click="ButtonMinimize_Click"
+                            />
+                    <Button Width="20" Height="20" 
+                            Content="◱" 
+                            BorderThickness="0"
+                            Background="Transparent" 
+                            Foreground="GhostWhite" 
+                            FontWeight="Bold"
+                            Click="WindowStateButton_Click"/>
+                    <Button Width="20" Height="20" 
+                            Content="❌" 
+                            BorderThickness="0"
+                            Background="Transparent" 
+                            Foreground="GhostWhite"
+                            FontWeight="Bold"
+                            Click="CloseButton_Click"/>
+
+
+
+                </StackPanel>
+
+
+
+            </Grid>
+        </Border>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <UniformGrid HorizontalAlignment="Center" VerticalAlignment="Top" Columns="2" MinWidth="766" Width="Auto" MinHeight="43" Margin="0,31,0,0" Grid.Row="0" Background="#131313">
+                <Label  HorizontalAlignment="Center"
+                    VerticalAlignment="Center"
+                    Content="Matriz Inicial"
+                    Height="32"
+                    Margin="0,20,0,0"
+                    Foreground="GhostWhite"
+                       FontWeight="SemiBold"
+                       FontSize="15"
+                    />
+                <Label   HorizontalAlignment="Center"
+                     VerticalAlignment="Center"
+                     Content="Matriz Escalonada"
+                     Height="32"
+                     Margin="0,20,0,0"
+                     Foreground="GhostWhite"
+                       FontWeight="SemiBold"
+                       FontSize="15"
+                     />
+            </UniformGrid>
+            <UniformGrid HorizontalAlignment="Center" Rows="1" Columns="2" Grid.Row="1" VerticalAlignment="Top" MinHeight="188" MinWidth="766" Height="Auto" Width="Auto" RenderTransformOrigin="0.5,0.5" Background="#1A1717" Grid.RowSpan="2">
+
+
+                <UniformGrid x:Name="uniformGrid1" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto"/>
+
+
+                <UniformGrid x:Name="uniformGrid2" HorizontalAlignment="Center" VerticalAlignment="Center" Height="Auto" Width="Auto"/>
+
+
+            </UniformGrid>
+            <UniformGrid x:Name="uniformGridResultado" VerticalAlignment="Bottom" HorizontalAlignment="Center" Rows="1" Grid.Row="3" MinHeight="30" MinWidth="766" Background="#131313" Width="Auto" Height="Auto"/>
+
+        </Grid>
+
+        <Grid Grid.Row="3" x:Name="txtGrid" Margin="20,10,20,10" >
+
+        </Grid>
+
+
+        <Grid Grid.Row="2" Margin="20,10,20,10">
+            <Menu  Background="#3500D3" Width="150"  BorderThickness="0">
+                <MenuItem Header="Tamanho do Sistema" VerticalAlignment="Center" HorizontalContentAlignment="Center" Foreground="GhostWhite" 
+                      FontSize="14"
+                      HorizontalAlignment="Center"
+                    FontWeight="SemiBold" Height="30" Width="151"
+                      Padding="5">
+
+                    <MenuItem Header="2" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="3" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="4" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="5" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="6" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="7" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="8" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black" Width="Auto"/>
+                    <MenuItem Header="9" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                    <MenuItem Header="10" Click="MenuItem_Click" HorizontalAlignment="Center" Foreground="Black"/>
+                </MenuItem>
+            </Menu>
+
+        </Grid>
+
+
+        <Button Foreground="GhostWhite" Content="CALCULAR" HorizontalAlignment="Center" Grid.Row="4" VerticalAlignment="Top" Height="56" Width="268"
+                    Background="#3500D3"
+                    
+                    FontSize="25"
+                    FontWeight="SemiBold"
+                    Click="CalcButton_Click"
+                    />
+
+
+    </Grid>
+
+</Window>
